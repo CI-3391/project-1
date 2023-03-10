@@ -1,4 +1,4 @@
-CREATE TABLE owid_covid_data
+CREATE TABLE data
 (	
 	iso_code varchar(100),
  	continent varchar(100),

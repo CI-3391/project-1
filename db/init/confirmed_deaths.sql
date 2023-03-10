@@ -14,6 +14,21 @@ CREATE TABLE confirmed_deaths
 );
 
 insert into confirmed_deaths (
-	select iso_code, date, total_deaths, new_deaths, new_deaths_smoothed, total_deaths_per_million, new_deaths_per_million, new_deaths_smoothed_per_million
+	select 
+		iso_code,
+		date,
+		total_deaths,
+		new_deaths,
+		new_deaths_smoothed,
+		total_deaths_per_million,
+		new_deaths_per_million,
+		new_deaths_smoothed_per_million
 	from data
-)
+	WHERE
+		total_deaths is not null
+		or new_deaths is not null
+		or new_deaths_smoothed is not null
+		or total_deaths_per_million is not null
+		or new_deaths_per_million is not null
+		or new_deaths_smoothed_per_millio is not null
+);

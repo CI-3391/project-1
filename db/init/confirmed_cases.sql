@@ -14,6 +14,21 @@ CREATE TABLE confirmed_cases
 );
 
 insert into confirmed_cases (
-	select iso_code, date, total_cases, new_cases, new_cases_smoothed, total_cases_per_million, new_cases_per_million, new_cases_smoothed_per_million
+	select 
+		iso_code,
+		date,
+		total_cases,
+		new_cases,
+		new_cases_smoothed,
+		total_cases_per_million,
+		new_cases_per_million,
+		new_cases_smoothed_per_million
 	from data
-)
+	WHERE
+		total_cases is not null
+		or new_cases is not null
+		or new_cases_smoothed is not null
+		or total_cases_per_million is not null
+		or new_cases_per_million is not null
+		or new_cases_smoothed_per_millio is not null
+);

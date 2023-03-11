@@ -1,6 +1,6 @@
 CREATE TABLE svr.reproduction_rate
 (	
-	iso_code varchar(100) references country(iso_code) not null,
+	iso_code varchar(100) references svr.country(iso_code) not null,
  	date date,
 	
  	reproduction_rate numeric(16,4),

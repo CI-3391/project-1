@@ -1,6 +1,6 @@
 CREATE TABLE svr.confirmed_deaths
 (	
-	iso_code varchar(100) references country(iso_code) not null,
+	iso_code varchar(100) references svr.country(iso_code) not null,
  	date date,
 	
  	total_deaths numeric(16,4),
@@ -30,5 +30,5 @@ insert into svr.confirmed_deaths (
 		or new_deaths_smoothed is not null
 		or total_deaths_per_million is not null
 		or new_deaths_per_million is not null
-		or new_deaths_smoothed_per_millio is not null
+		or new_deaths_smoothed_per_million is not null
 );

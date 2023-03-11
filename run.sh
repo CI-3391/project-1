@@ -34,5 +34,7 @@ psql -d $DB_NAME -f .$DB_INIT_PATH/reproduction_rate.sql
 psql -d $DB_NAME -f .$DB_INIT_PATH/tests_and_positivity.sql
 psql -d $DB_NAME -f .$DB_INIT_PATH/vaccinations.sql
 
+# Queries
+
 # Drop db
 dropdb $DB_NAME

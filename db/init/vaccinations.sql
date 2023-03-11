@@ -1,5 +1,5 @@
 CREATE TABLE svr.vaccinations (	
-	iso_code varchar(100) references country(iso_code) not null,
+	iso_code varchar(100) references svr.country(iso_code) not null,
  	date date,
 	
  	total_vaccinations numeric(16,4),

@@ -1,6 +1,6 @@
 CREATE TABLE svr.confirmed_cases
 (	
-	iso_code varchar(100) references country(iso_code) not null,
+	iso_code varchar(100) references svr.country(iso_code) not null,
  	date date not null,
 
  	total_cases numeric(16,4),
@@ -8,7 +8,7 @@ CREATE TABLE svr.confirmed_cases
  	new_cases_smoothed numeric(16,4),
 	total_cases_per_million numeric(16,4),
 	new_cases_per_million numeric(16,4),
-	new_cases_smoothed_per_million numeric(16,4),blank
+	new_cases_smoothed_per_million numeric(16,4),
     
 	primary key (iso_code, date)
 );

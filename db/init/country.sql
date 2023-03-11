@@ -19,7 +19,7 @@ create table svr.country (
 	life_expectancy numeric(16,4),
 	human_development_index numeric(16,4),
 	
-	test_unit varchar(100) references test_unit(name)
+	test_unit varchar(100) references svr.test_unit(name)
 );
 
 insert into svr.country(

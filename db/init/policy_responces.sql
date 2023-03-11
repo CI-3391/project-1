@@ -1,6 +1,6 @@
 CREATE TABLE svr.policy_responses (	
 	iso_code varchar(100) references svr.country(iso_code) not null,
- 	date date,
+ 	date date not null,
 	
  	stringency_index numeric(16,4),
 	

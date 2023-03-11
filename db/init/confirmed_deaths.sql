@@ -1,7 +1,7 @@
 CREATE TABLE svr.confirmed_deaths
 (	
 	iso_code varchar(100) references svr.country(iso_code) not null,
- 	date date,
+ 	date date not null,
 	
  	total_deaths numeric(16,4),
  	new_deaths numeric(16,4),

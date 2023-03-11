@@ -4,7 +4,7 @@
 CREATE TABLE svr.excess_mortality
 (	
 	iso_code varchar(100)  references svr.country(iso_code) not null,
- 	date date,
+ 	date date not null,
 	
  	excess_mortality numeric(16,4),
  	excess_mortality_cumulative numeric(16,4),

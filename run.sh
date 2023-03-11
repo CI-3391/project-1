@@ -1,5 +1,6 @@
 #!/bin/sh
 
+DB_NAME=owid-covid-data
 RAW_TABLE_NAME=data
 CSV_FILE_PATH=./resources/owid-covid-data.csv
 DB_INIT_PATH=./db/init
@@ -9,16 +10,21 @@ DB_QUERIES_PATH=./db/queries
 #wget https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv -P ./resources
 
 # Drop db
-dropdb --if-exists $RAW_TABLE_NAME
+dropdb --if-exists $DB_NAME
 
 # Create db
-createdb $RAW_TABLE_NAME
+createdb $DB_NAME
 
 # Create raw data table
-psql -d $RAW_TABLE_NAME -f .$DB_INIT_PATH/raw_data.sql
+psql -d $DB_NAME -f .$DB_INIT_PATH/raw_data.sql
 
 # Load raw data
-psql -d $RAW_TABLE_NAME -c "\COPY data FROM '$CSV_FILE_PATH' WITH (FORMAT csv, DELIMITER ',', NULL '', header);"
+psql -d $DB_NAME -c "\COPY $RAW_TABLE_NAME FROM '$CSV_FILE_PATH' WITH (FORMAT csv, DELIMITER ',', NULL '', header);"
+
+# Create tables
+psql -d $DB_NAME -f .$DB_INIT_PATH/test_unit.sql
+psql -d $DB_NAME -f .$DB_INIT_PATH/country.sql
+psql -d $DB_NAME -f .$DB_INIT_PATH/confirmed_cases.sql
 
 # Drop db
-dropdb $RAW_TABLE_NAME
+dropdb $DB_NAME

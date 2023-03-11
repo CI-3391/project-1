@@ -1,4 +1,4 @@
-create table country (
+create table svr.country (
 	iso_code varchar(100) primary key not null,
 	
 	continent varchar(100),
@@ -22,7 +22,7 @@ create table country (
 	test_unit varchar(100) references test_unit(name)
 );
 
-insert into country(
+insert into svr.country(
 	(
 		select distinct
 			iso_code,
@@ -44,7 +44,7 @@ insert into country(
 			life_expectancy,
 			human_development_index,
 			null as tests_units
-		from data
+		from svr.data
 
 		except
 
@@ -68,7 +68,7 @@ insert into country(
 			life_expectancy,
 			human_development_index,
 			null as tests_units
-		from data
+		from svr.data
 		where 
 			tests_units is not null
 	)
@@ -95,7 +95,7 @@ insert into country(
 		life_expectancy,
 		human_development_index,
 		tests_units
-	from data
+	from svr.data
 	where 
 		tests_units is not null
 	order by iso_code

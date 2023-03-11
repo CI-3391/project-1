@@ -1,4 +1,4 @@
-CREATE TABLE hostpital_and_icu
+CREATE TABLE svr.hostpital_and_icu
 (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date,
@@ -15,7 +15,7 @@ CREATE TABLE hostpital_and_icu
 	primary key (iso_code, date)
 );
 
-insert into hostpital_and_icu (
+insert into svr.hostpital_and_icu (
 	select 
 		iso_code,
 		date, 
@@ -27,7 +27,7 @@ insert into hostpital_and_icu (
 		weekly_icu_admissions_per_million,
 		weekly_hosp_admissions,
 		weekly_hosp_admissions_per_million
-	from data
+	from svr.data
 	where
 		icu_patients is not null
 		or icu_patients_per_million is not null

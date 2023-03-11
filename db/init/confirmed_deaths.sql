@@ -1,4 +1,4 @@
-CREATE TABLE confirmed_deaths
+CREATE TABLE svr.confirmed_deaths
 (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date,
@@ -13,7 +13,7 @@ CREATE TABLE confirmed_deaths
 	primary key (iso_code, date)
 );
 
-insert into confirmed_deaths (
+insert into svr.confirmed_deaths (
 	select 
 		iso_code,
 		date,
@@ -23,7 +23,7 @@ insert into confirmed_deaths (
 		total_deaths_per_million,
 		new_deaths_per_million,
 		new_deaths_smoothed_per_million
-	from data
+	from svr.data
 	WHERE
 		total_deaths is not null
 		or new_deaths is not null

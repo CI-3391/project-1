@@ -1,4 +1,4 @@
-CREATE TABLE vaccinations (	
+CREATE TABLE svr.vaccinations (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
@@ -19,7 +19,7 @@ CREATE TABLE vaccinations (
 	primary key (iso_code, date)
 );
 
-insert into vaccinations (
+insert into svr.vaccinations (
 	select
 		iso_code,
 		date,
@@ -36,7 +36,7 @@ insert into vaccinations (
 		new_vaccinations_smoothed_per_million,
 		new_people_vaccinated_smoothed,
 		new_people_vaccinated_smoothed_per_hundred
-	from data
+	from svr.data
 	where 
 		total_vaccinations is not null
 		or people_vaccinated is not null

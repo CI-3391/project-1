@@ -1,4 +1,4 @@
-CREATE TABLE reproduction_rate
+CREATE TABLE svr.reproduction_rate
 (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date,
@@ -8,12 +8,12 @@ CREATE TABLE reproduction_rate
 	primary key (iso_code, date)
 );
 
-insert into reproduction_rate (
+insert into svr.reproduction_rate (
 	select
 		iso_code,
 		date,
 		reproduction_rate
-	from data
+	from svr.data
 	where 
 		reproduction_rate is not null
 );

@@ -1,4 +1,4 @@
-CREATE TABLE policy_responses (	
+CREATE TABLE svr.policy_responses (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
@@ -7,12 +7,12 @@ CREATE TABLE policy_responses (
 	primary key (iso_code, date)
 );
 
-insert into policy_responses (
+insert into svr.policy_responses (
 	select
 		iso_code,
 		date,
 		stringency_index
-	from data
+	from svr.data
 	where 
 		stringency_index is not null
 );

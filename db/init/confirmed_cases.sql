@@ -1,4 +1,4 @@
-CREATE TABLE confirmed_cases
+CREATE TABLE svr.confirmed_cases
 (	
 	iso_code varchar(100) references country(iso_code) not null,
  	date date not null,
@@ -13,7 +13,7 @@ CREATE TABLE confirmed_cases
 	primary key (iso_code, date)
 );
 
-insert into confirmed_cases (
+insert into svr.confirmed_cases (
 	select 
 		iso_code,
 		date,
@@ -23,7 +23,7 @@ insert into confirmed_cases (
 		total_cases_per_million,
 		new_cases_per_million,
 		new_cases_smoothed_per_million
-	from data
+	from svr.data
 	WHERE
 		total_cases is not null
 		or new_cases is not null

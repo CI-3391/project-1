@@ -1,4 +1,6 @@
-CREATE TABLE data
+CREATE SCHEMA IF NOT EXISTS svr AUTHORIZATION SESSION_USER;
+
+CREATE TABLE svr.data
 (	
 	iso_code varchar(100),
  	continent varchar(100),

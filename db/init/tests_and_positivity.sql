@@ -2,7 +2,7 @@
 -- country y cuendo este es nulo el resto de atributos tambien lo son.
 
 CREATE TABLE tests_and_positivity (	
-	iso_code varchar(100),
+	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
  	total_tests numeric(16,4),

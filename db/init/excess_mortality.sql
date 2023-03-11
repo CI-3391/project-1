@@ -3,7 +3,7 @@
 
 CREATE TABLE excess_mortality
 (	
-	iso_code varchar(100),
+	iso_code varchar(100)  references country(iso_code) not null,
  	date date,
 	
  	excess_mortality numeric(16,4),

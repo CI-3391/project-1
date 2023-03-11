@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DB_NAME=owid-covid-data
+SCHEMA_NAME=svr
 RAW_TABLE_NAME=data
 CSV_FILE_PATH=./resources/owid-covid-data.csv
 DB_INIT_PATH=./db/init
@@ -15,11 +16,14 @@ dropdb --if-exists $DB_NAME
 # Create db
 createdb $DB_NAME
 
+# Cerate Schema ant raw data table
+psql -d $DB_NAME -c "\CREATE SCHEMA IF NOT EXISTS $SCHEMA_NAME AUTHORIZATION SESSION_USER;"
+
 # Create raw data table
 psql -d $DB_NAME -f .$DB_INIT_PATH/raw_data.sql
 
 # Load raw data
-psql -d $DB_NAME -c "\COPY $RAW_TABLE_NAME FROM '$CSV_FILE_PATH' WITH (FORMAT csv, DELIMITER ',', NULL '', header);"
+psql -d $DB_NAME -c "\COPY $SCHEMA_NAME.$RAW_TABLE_NAME FROM '$CSV_FILE_PATH' WITH (FORMAT csv, DELIMITER ',', NULL '', header);"
 
 # Create tables
 psql -d $DB_NAME -f .$DB_INIT_PATH/test_unit.sql

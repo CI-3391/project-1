@@ -1,6 +1,6 @@
 CREATE TABLE confirmed_deaths
 (	
-	iso_code varchar(100),
+	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
  	total_deaths numeric(16,4),

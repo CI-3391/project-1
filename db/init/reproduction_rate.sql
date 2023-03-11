@@ -1,6 +1,6 @@
 CREATE TABLE reproduction_rate
 (	
-	iso_code varchar(100),
+	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
  	reproduction_rate numeric(16,4),

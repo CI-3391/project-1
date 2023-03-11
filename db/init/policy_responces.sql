@@ -1,5 +1,5 @@
 CREATE TABLE policy_responses (	
-	iso_code varchar(100),
+	iso_code varchar(100) references country(iso_code) not null,
  	date date,
 	
  	stringency_index numeric(16,4),

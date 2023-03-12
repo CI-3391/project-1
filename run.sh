@@ -37,6 +37,7 @@ psql -d $DB_NAME -f .$DB_INIT_PATH/vaccinations.sql
 # Queries
 psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_one.sql
 psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_two.sql
+psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_three.sql
 
 # Drop db
 dropdb $DB_NAME

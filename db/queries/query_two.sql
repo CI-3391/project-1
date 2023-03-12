@@ -12,9 +12,18 @@ insert into svr.total_cases (
 	group by iso_code
 );
 
-select o.iso_code, min(o.date) as date
-from svr.confirmed_cases as o
-join svr.total_cases as i on o.iso_code = i.iso_code
-where o.total_cases >= i.max_total_case / 2
-group by o.iso_code
-order by o.iso_code
+create table svr.query_two (
+	iso_code varchar(100) references svr.country(iso_code) not null,
+	date date not null,
+	
+	primary key (iso_code)
+);
+
+insert into svr.query_two (
+	select o.iso_code, min(o.date) as date
+	from svr.confirmed_cases as o
+	join svr.total_cases as i on o.iso_code = i.iso_code
+	where o.total_cases >= i.max_total_case / 2
+	group by o.iso_code
+	order by o.iso_code
+);

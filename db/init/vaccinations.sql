@@ -1,3 +1,7 @@
+/* 
+	CREATE AND LOAD TABLE (svr.vaccinations)
+*/
+
 CREATE TABLE svr.vaccinations (	
 	iso_code varchar(100) references svr.country(iso_code) not null,
  	date date not null,

@@ -1,5 +1,11 @@
--- Esta tabla tiene la bondad de que se pueden elimar las columnas que contiene null puesto que no
--- existe alguna columna que tenga un atributo null pero el resto no.
+/* 
+	CREATE AND LOAD TABLE (svr.excess_mortality)
+*/
+
+-- NOTES:
+-- Esta tabla tiene la bondad de que se pueden elimar las columnas que contiene 
+-- null puesto que no existe alguna columna que tenga un atributo null pero el 
+-- resto no.
 
 CREATE TABLE svr.excess_mortality
 (	

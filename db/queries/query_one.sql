@@ -1,4 +1,8 @@
 /* 
+	RESPONSE: QUERY ONE (svr.policy_responses)
+*/
+
+/* 
     ¿Son siempre iguales los datos de la columna new_cases_smoothed con los
     calculados en el script?
 

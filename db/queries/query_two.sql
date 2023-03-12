@@ -1,3 +1,7 @@
+/* 
+	RESPONSE: QUERY TWO (svr.policy_responses)
+*/
+
 create table svr.total_cases (
 	iso_code varchar(100) references svr.country(iso_code) not null,
 	

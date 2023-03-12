@@ -1,3 +1,7 @@
+/* 
+	CREATE AND LOAD TABLE (svr.test_unit)
+*/
+
 create table svr.test_unit (
 	name varchar(100) primary key not null
 );

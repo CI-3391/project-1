@@ -1,5 +1,10 @@
--- tests_units son son agregados en esta tabla puesto que solo existe uno por
--- country y cuendo este es nulo el resto de atributos tambien lo son.
+/* 
+	CREATE AND LOAD TABLE (svr.tests_and_positivity)
+*/
+
+-- NOTES:
+-- tests_units son agregados en esta tabla puesto que solo existe uno por
+-- country y cuando este es nulo el resto de atributos tambien lo son.
 
 CREATE TABLE svr.tests_and_positivity (	
 	iso_code varchar(100) references svr.country(iso_code) not null,

@@ -1,3 +1,7 @@
+/*
+	CREATE AND LOAD TABLE (svr.confirmed deaths)
+*/
+
 CREATE TABLE svr.confirmed_deaths
 (	
 	iso_code varchar(100) references svr.country(iso_code) not null,

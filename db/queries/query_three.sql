@@ -1,3 +1,7 @@
+/* 
+	RESPONSE: QUERY three (svr.policy_responses)
+*/
+
 CREATE TABLE svr.total_vaccinations
 (	
 	iso_code varchar(100) references svr.country(iso_code) not null,

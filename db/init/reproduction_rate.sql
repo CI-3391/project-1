@@ -1,3 +1,7 @@
+/* 
+	CREATE AND LOAD TABLE (svr.reproduction_rate)
+*/
+
 CREATE TABLE svr.reproduction_rate
 (	
 	iso_code varchar(100) references svr.country(iso_code) not null,

@@ -6,38 +6,55 @@ DATA_TABLE_NAME=data
 CSV_FILE_PATH=./resources/owid-covid-data.csv
 DB_INIT_PATH=./db/init
 DB_QUERIES_PATH=./db/queries
+CSV_URL=https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
 
 # Get CSV
-#wget https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv -P ./resources
+echo $'\x0a\x0a -- Resources check.'
+echo $'--------------------------------------------------------------------\x0a'
+
+if test -f "$CSV_FILE_PATH"; then 
+    echo $'\x0a\x0a -- csv file already downloaded, all good!.'
+else 
+    echo $'\x0a\x0a -- Downloading csv file, be patient.'
+    echo $'--------------------------------------------------------------------\x0a'
+    wget $CSV_URL -P ./resources
+fi
 
 # Drop db
-dropdb --if-exists $DB_NAME
+echo $'\x0a\x0a -- Drop db if exists to avoid and conflic.'
+echo $'--------------------------------------------------------------------\x0a'
+dropdb --if-exists -e $DB_NAME
 
 # Create db
-createdb $DB_NAME
+echo $'\x0a\x0a -- Create db.'
+echo $'--------------------------------------------------------------------\x0a'
+createdb -e $DB_NAME
 
 # Create schema and data table
-psql -d $DB_NAME -f .$DB_INIT_PATH/data.sql
+echo $'\x0a\x0a -- Create schema svr and load csv file.'
+echo $'--------------------------------------------------------------------\x0a'
+psql -d $DB_NAME -f $DB_INIT_PATH/data.sql -e
 
 # Load raw data
 psql -d $DB_NAME -c "\COPY $SCHEMA_NAME.$DATA_TABLE_NAME FROM '$CSV_FILE_PATH' WITH (FORMAT csv, DELIMITER ',', NULL '', header);"
 
 # Create tables
-psql -d $DB_NAME -f .$DB_INIT_PATH/test_unit.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/country.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/confirmed_cases.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/confirmed_deaths.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/excess_mortality.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/hospital_and_icu.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/policy_responces.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/reproduction_rate.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/tests_and_positivity.sql
-psql -d $DB_NAME -f .$DB_INIT_PATH/vaccinations.sql
+echo $'\x0a\x0a -- Tables creation and data normalization.'
+echo $'--------------------------------------------------------------------\x0a'
+psql -d $DB_NAME -f $DB_INIT_PATH/test_unit.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/country.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/confirmed_cases.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/confirmed_deaths.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/excess_mortality.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/hospital_and_icu.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/policy_responces.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/reproduction_rate.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/tests_and_positivity.sql -e
+psql -d $DB_NAME -f $DB_INIT_PATH/vaccinations.sql -e
 
 # Queries
-psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_one.sql
-psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_two.sql
-psql -d $DB_NAME -f .$DB_QUERIES_PATH/query_three.sql
-
-# Drop db
-dropdb $DB_NAME
+echo $'\x0a\x0a -- Running queries, some tables will be created in this stage for better performance.'
+echo $'--------------------------------------------------------------------\x0a'
+psql -d $DB_NAME -f $DB_QUERIES_PATH/query_one.sql -e
+psql -d $DB_NAME -f $DB_QUERIES_PATH/query_two.sql -e
+psql -d $DB_NAME -f $DB_QUERIES_PATH/query_three.sql -e

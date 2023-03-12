@@ -1,3 +1,7 @@
+/*
+	CREATE AND LOAD TABLE (svr.country)
+*/
+
 create table svr.country (
 	iso_code varchar(100) primary key not null,
 	

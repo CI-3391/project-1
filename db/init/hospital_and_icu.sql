@@ -1,3 +1,7 @@
+/* 
+	CREATE AND LOAD TABLE (svr.hostpital_and_icu)
+*/
+
 CREATE TABLE svr.hostpital_and_icu
 (	
 	iso_code varchar(100) references svr.country(iso_code) not null,

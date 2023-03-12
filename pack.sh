@@ -1,7 +1,13 @@
 #!/bin/sh
 
-if test -f "project-1_15-11377.tar.gz"; then 
-    rm project-1_15-11377.tar.gz  
+PROYECT_NAME='project-1'
+A1='15-11377'
+A2='xx-xxxxx'
+FILE_NAME="${PROYECT_NAME}_${A1}_${A2}.tar.gz"
+FILES_TO_INCLUDE='./db ./resources/model.png ./run.sh ./readme.txt'
+
+if test -f "$FILE_NAME"; then 
+    rm $FILE_NAME  
 fi
 
-tar -cvf project-1_15-11377.tar.gz ./db ./resources/model.png ./run.sh ./readme.txt
+tar -cvf $FILE_NAME $FILES_TO_INCLUDE

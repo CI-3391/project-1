@@ -1,5 +1,5 @@
 /* 
-	RESPONSE: QUERY TWO (svr.policy_responses)
+	RESPONSE: QUERY TWO
 */
 
 create table svr.total_cases (

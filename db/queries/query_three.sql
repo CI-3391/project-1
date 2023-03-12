@@ -1,5 +1,5 @@
 /* 
-	RESPONSE: QUERY three (svr.policy_responses)
+	RESPONSE: QUERY THREE
 */
 
 CREATE TABLE svr.total_vaccinations

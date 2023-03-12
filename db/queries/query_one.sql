@@ -1,5 +1,5 @@
 /* 
-	RESPONSE: QUERY ONE (svr.policy_responses)
+	RESPONSE: QUERY ONE
 */
 
 /* 
@@ -9,7 +9,7 @@
 
     Salvo por 257 casos, los resultados calculados son iguales.
 
-    Se pueden encontra estos casos ejecutando
+    Se pueden encontrar estos casos ejecutando:
 
     SELECT iso_code, date, new_cases, new_cases_smoothed, new_cases_smoothed_calc 
     FROM svr.query_one
@@ -18,9 +18,9 @@
     Al validar los datos cercanos a cada fecha, usando por ejemplo 2021-10-13
     que se corresponde con uno de los valores desiguales se observa que las 7
     fechas previas no presentan valores diferentes y tampoco son null. Por lo
-    tanto se desconoce la razón de por qué estos 257 casos son diferentes.ABORT
+    tanto se desconoce la razón de por qué estos 257 casos son diferentes.
 
-    Query utilizado para validar las fechas cercanas
+    Query utilizado para validar las fechas cercanas:
 
     SELECT iso_code, date, new_cases, new_cases_smoothed, new_cases_smoothed_calc 
     FROM svr.query_one

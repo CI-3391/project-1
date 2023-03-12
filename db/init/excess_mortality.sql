@@ -3,9 +3,9 @@
 */
 
 -- NOTES:
--- Esta tabla tiene la bondad de que se pueden elimar las columnas que contiene 
--- null puesto que no existe alguna columna que tenga un atributo null pero el 
--- resto no.
+-- Esta tabla tiene la bondad de que se pueden eliminar las columnas que 
+-- contienen null puesto que no existe alguna columna que tenga un atributo null 
+-- pero el resto no.
 
 CREATE TABLE svr.excess_mortality
 (	

@@ -16,7 +16,7 @@ if test -f "$CSV_FILE_PATH"; then
     echo $'\x0a\x0a -- csv file already downloaded, all good!.'
 else 
     echo $'\x0a\x0a -- Downloading csv file, be patient.'
-    echo $'--------------------------------------------------------------------\x0a'
+    echo $'----------------------------------------------------------------\x0a'
     wget $CSV_URL -P ./resources
 fi
 
@@ -53,8 +53,11 @@ psql -d $DB_NAME -f $DB_INIT_PATH/tests_and_positivity.sql -e
 psql -d $DB_NAME -f $DB_INIT_PATH/vaccinations.sql -e
 
 # Queries
-echo $'\x0a\x0a -- Running queries, some tables will be created in this stage for better performance.'
+echo $'\x0a\x0a -- Running queries.'
+echo $' -- Some tables will be created in this stage for better performance.'
 echo $'--------------------------------------------------------------------\x0a'
 psql -d $DB_NAME -f $DB_QUERIES_PATH/query_one.sql -e
 psql -d $DB_NAME -f $DB_QUERIES_PATH/query_two.sql -e
 psql -d $DB_NAME -f $DB_QUERIES_PATH/query_three.sql -e
+psql -d $DB_NAME -f $DB_QUERIES_PATH/query_four.sql -e
+psql -d $DB_NAME -f $DB_QUERIES_PATH/query_five.sql -e

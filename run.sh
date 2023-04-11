@@ -13,7 +13,7 @@ echo $'\x0a\x0a -- Resources check.'
 echo $'--------------------------------------------------------------------\x0a'
 
 if test -f "$CSV_FILE_PATH"; then 
-    echo $'\x0a\x0a -- csv file already downloaded, all good!.'
+    echo $'\x0a\x0a -- csv File already downloaded, all good!.'
 else 
     echo $'\x0a\x0a -- Downloading csv file, be patient.'
     echo $'----------------------------------------------------------------\x0a'
